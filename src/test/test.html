@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WebSocket Test</title>
+    <script src="https://cdn.jsdelivr.net/npm/sockjs-client/dist/sockjs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/stomp-websocket/lib/stomp.min.js"></script>
+    <script>
+        // 测试服务器的WebSocket端点
+        const ws_url = 'http://localhost:8080/ws';
+        console.log("here");
+        const socket = new SockJS(ws_url);
+        const stompClient = Stomp.over(socket);
+
+        // 连接到服务器
+        stompClient.connect({}, function(frame) {
+            console.log('Connected: ' + frame);
+            // 订阅目的地，这里需要与服务器端的目的地匹配
+            stompClient.subscribe('/user/1/restaurant', function(order) {
+                // 这里处理接收到的消息
+                // 这里的body就是一个列表 和请求的时候一样 body也是一个列表
+                var message = JSON.parse(order.body);
+                console.log('Received order:', message);
+                // 你可以在这里添加代码来处理订单消息，例如更新UI
+            });
+        });
+
+    </script>
+</head>
+<body>
+<h1>WebSocket Test</h1>
+</body>
+</html>
