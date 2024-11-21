@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>nus</groupId>
-    <artifactId>autoyummy</artifactId>
+    <artifactId>auto-yummy-server</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>autoyummy</name>
-    <description>autoyummy</description>
+    <name>auto-yummy-server</name>
+    <description>auto-yummy-server</description>
     <properties>
         <java.version>17</java.version>
     </properties>
